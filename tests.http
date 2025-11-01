@@ -1,0 +1,54 @@
+### ===================================
+### TESTS PARA APLICACIÓN DE INVENTARIOS
+### Archivo: tests.http
+### 100% GRATUITO - REST Client Extension
+### ===================================
+
+@baseUrl = http://localhost:5000
+
+### 1. Verificar que el servidor Flask esté corriendo
+GET {{baseUrl}}
+
+### 2. Probar descarga de archivo de ejemplo - Inventario Maestro
+GET {{baseUrl}}/ejemplos/inventario_maestro_demo.csv
+
+### 3. Probar descarga de archivo de ejemplo - Conteo Físico  
+GET {{baseUrl}}/ejemplos/conteo_fisico_demo.csv
+
+### 4. Probar página de error 404
+GET {{baseUrl}}/pagina-que-no-existe
+
+### 5. Test de archivos estáticos - CSS
+GET {{baseUrl}}/static/css/styles.css
+
+### 6. Test de archivos estáticos - JavaScript
+GET {{baseUrl}}/static/js/main.js
+
+### ===================================
+### TESTS AVANZADOS (para el futuro)
+### ===================================
+
+### Test POST (cuando agregues API endpoints)
+# POST {{baseUrl}}/api/procesar
+# Content-Type: application/json
+# 
+# {
+#   "maestro_data": "sku,cantidad\nA100,50",
+#   "conteo_data": "sku,cantidad\nA100,48",
+#   "formato": "CSV"
+# }
+
+### Test con headers personalizados
+# GET {{baseUrl}}/api/status
+# Accept: application/json
+# User-Agent: REST Client Test
+
+### ===================================
+### VARIABLES PARA DIFERENTES ENTORNOS
+### ===================================
+
+### Desarrollo local
+# @baseUrl = http://localhost:5000
+
+### Cuando despliegues en producción (futuro)
+# @baseUrl = https://tu-app.herokuapp.com

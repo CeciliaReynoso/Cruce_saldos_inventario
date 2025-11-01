@@ -1,0 +1,1 @@
+# Archivo simplificado para mantener la estructura actual funcionando
